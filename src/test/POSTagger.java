@@ -12,8 +12,6 @@ import utils.FileManager;
 import utils.TaggedSentenceService;
 
 public class POSTagger {
-
-	private String taggerModelFilename;
 	private MaxentTagger tagger;
 
 	public POSTagger(String taggerModelFilename) {
@@ -25,6 +23,7 @@ public class POSTagger {
 		List<TaggedSentence> tagged = new ArrayList<>();
 		for (int i = 0; i < untagged.size(); i++) {
 			String t = tagger.tagTokenizedString(untagged.get(i));
+			System.out.println(t);
 			tagged.add(TaggedSentenceService.getTaggedSentence(i, t));
 		}
 		return tagged;
